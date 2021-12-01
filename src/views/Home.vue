@@ -1,15 +1,71 @@
 <template>
-  <div class="box">首页</div>
+  <div class="box">
+    <ArticleList :articles="articles"></ArticleList>
+  </div>
 </template>
 <script>
+import ArticleList from "components/content/article/ArticleList";
 export default {
   data() {
-    return {};
+    return {
+      articles: [
+        {
+          title: "哈哈哈哈",
+          content: "呵呵呵呵呵呵呵呵",
+        },
+        {
+          title: "哈哈哈哈",
+          content: "呵呵呵呵呵呵呵呵",
+        },
+        {
+          title: "哈哈哈哈",
+          content: "呵呵呵呵呵呵呵呵",
+        },
+        {
+          title: "哈哈哈哈",
+          content: "呵呵呵呵呵呵呵呵",
+        },
+        {
+          title: "哈哈哈哈",
+          content: "呵呵呵呵呵呵呵呵",
+        },
+        {
+          title: "哈哈哈哈",
+          content: "呵呵呵呵呵呵呵呵",
+        },
+        {
+          title: "哈哈哈哈",
+          content: "呵呵呵呵呵呵呵呵",
+        },
+        {
+          title: "哈哈哈哈",
+          content: "呵呵呵呵呵呵呵呵",
+        },
+        {
+          title: "哈哈哈哈",
+          content: "呵呵呵呵呵呵呵呵",
+        },
+        {
+          title: "哈哈哈哈",
+          content: "呵呵呵呵呵呵呵呵",
+        },
+        {
+          title: "哈哈哈哈",
+          content: "呵呵呵呵呵呵呵呵",
+        },
+        {
+          title: "哈哈哈哈",
+          content: "呵呵呵呵呵呵呵呵",
+        },
+      ],
+    };
   },
   methods: {
     init() {},
   },
-  components: {},
+  components: {
+    ArticleList,
+  },
   created() {},
   mounted() {},
 };
