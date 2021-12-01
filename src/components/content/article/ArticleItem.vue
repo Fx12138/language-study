@@ -42,20 +42,30 @@ export default {
 .article-box {
   box-sizing: border-box;
   width: 100%;
-  height: 100px;
   padding: 20px;
   border-bottom: 1px solid #f0f2f7;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   .article-title {
-    height: 20px;
+    height: 50px;
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 1.2rem;
     width: 100%;
+
     background-color: #ffffff;
+  }
+  .article-content {
+    display: -webkit-box; /**对象作为伸缩盒子模型展示**/
+    -webkit-box-orient: vertical; /**设置或检索伸缩盒子对象的子元素的排列方式**/
+    -webkit-line-clamp: 3; /**显示的行数**/
+    overflow: hidden; /**隐藏超出的内容**/
   }
 }
 .article-options {
   display: flex;
+  margin-top: 30px;
 }
 .options-good {
   display: flex;

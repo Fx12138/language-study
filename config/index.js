@@ -12,8 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: "http://localhost:3001",  // 后端的地址
-        secure: false,
+        target: "http://127.0.0.1:3001/api",  // 后端的地址
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
