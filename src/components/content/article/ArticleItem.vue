@@ -1,6 +1,8 @@
 <template>
   <div class="article-box">
-    <div class="article-title">{{ articleItem.title }}</div>
+    <div class="article-title" @click="toDetail(articleItem._id)">
+      {{ articleItem.title }}
+    </div>
     <div class="article-content">{{ articleItem.content }}</div>
     <div class="article-options">
       <div class="options-good">
@@ -8,7 +10,7 @@
         <div>反对</div>
       </div>
       <div class="options-operate">
-        <div class="operate">评论</div>
+        <div class="operate">展开评论</div>
         <div class="operate">收藏</div>
         <div class="operate">分享</div>
       </div>
@@ -30,6 +32,11 @@ export default {
   },
   methods: {
     init() {},
+    toDetail(articleId) {
+      this.$router.push({
+        path: `/article/${articleId}`,
+      });
+    },
   },
   components: {},
   created() {},
@@ -38,7 +45,7 @@ export default {
   },
 };
 </script>
-<style lang="less">
+<style lang="less" scoped>
 .article-box {
   box-sizing: border-box;
   width: 100%;
@@ -72,6 +79,9 @@ export default {
 }
 .options-operate {
   display: flex;
-  margin-left: 200px;
+  margin-left: 100px;
+  .operate {
+    margin-left: 50px;
+  }
 }
 </style>

@@ -48,6 +48,8 @@ export default {
 }
 #content {
   flex: 1;
+  display: flex;
+  justify-content: center;
   background-color: #ffffff;
 }
 </style>

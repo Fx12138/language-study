@@ -1,5 +1,6 @@
 <template>
   <div class="header-box">
+    <Publish @dialogFormVisible="controlDialog" v-if="dialogFormVisible" />
     <span class="title">语学</span>
     <ul>
       <li
@@ -16,12 +17,24 @@
     <div class="search-button">
       <button>搜索</button>
     </div>
-    <div class="photo">
-      <img src="~assets/img/photo.jpg" alt="" />
+    <div class="search-button">
+      <button @click="dialogFormVisible = true">发表</button>
+    </div>
+    <div class="photo" @mouseover="photoOver" @mouseleave="photoLeave">
+      <div class="photo-img"><img src="~assets/img/photo.jpg" alt="" /></div>
+      <div class="photo-profile" v-show="photoClicked">
+        <ul>
+          <li @click="$router.push('/my/profile')">我的主页</li>
+          <li>我的文章</li>
+          <li>我的收藏</li>
+          <li>退出登录</li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 <script>
+import Publish from "components/content/article/Publish";
 export default {
   data() {
     return {
@@ -43,6 +56,8 @@ export default {
           tabTitle: "俄语",
         },
       ],
+      photoClicked: false,
+      dialogFormVisible: false,
     };
   },
   methods: {
@@ -63,8 +78,18 @@ export default {
           break;
       }
     },
+
+    photoOver() {
+      this.photoClicked = true;
+    },
+    photoLeave() {
+      this.photoClicked = false;
+    },
+    controlDialog(dialogFormVisible) {
+      this.dialogFormVisible = dialogFormVisible;
+    },
   },
-  components: {},
+  components: { Publish },
   created() {},
   mounted() {
     this.init();
@@ -72,11 +97,6 @@ export default {
 };
 </script>
 <style lang="less">
-.ssss {
-  height: 100px;
-  width: 100px;
-  background-color: yellow;
-}
 .header-box {
   width: 100vw;
   height: 80px;
@@ -84,7 +104,7 @@ export default {
   // overflow: hidden;
   display: flex;
   border: 1px solid #f0f2f7;
-  box-shadow: 0 0 6px;
+  box-shadow: 0 0 2px;
 }
 .title {
   margin-left: 100px;
@@ -121,14 +141,49 @@ ul {
   }
 }
 .photo {
-  height: 60px;
-  width: 60px;
+  height: 80px;
+  width: 100px;
   margin-left: 100px;
-  border-radius: 50%;
-  img {
+  // margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .photo-img {
     height: 60px;
     width: 60px;
-    border-radius: 50%;
+    padding-top: 10px;
+    padding-bottom: 13px;
+    img {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+    }
+  }
+}
+
+// 设置鼠标悬浮显示下拉框
+.photo-profile {
+  height: 100px;
+  width: 100px;
+  // margin-top: 15px;
+  box-shadow: 0px 0px 1px;
+  background-color: #ffffff;
+  border: 1px solid #f0f2f7;
+  font-size: 13px;
+  ul {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    li {
+      line-height: 25px;
+      height: 25px;
+      text-align: center;
+      margin: 0;
+    }
+    li:hover {
+      color: tomato;
+      cursor: default;
+    }
   }
 }
 </style>

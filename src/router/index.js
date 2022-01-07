@@ -5,6 +5,8 @@ import English from 'views/category/English'
 import Korean from 'views/category/Korean'
 import Japanese from 'views/category/Japanese'
 import Russian from 'views/category/Russian'
+import Profile from 'views/my/profile'
+import ArticleDetail from 'views/article/ArticleDetail'
 
 Vue.use(Router)
 const originalPush = Router.prototype.push
@@ -16,7 +18,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home'
+      redirect: '/english'
     },
     {
       path: '/home',
@@ -42,6 +44,16 @@ export default new Router({
       path: '/russian',
       name: 'Russian',
       component: Russian
+    },
+    {
+      path: '/my/profile',
+      name: 'Profile',
+      component: Profile
+    },
+    {
+      path: '/article/:articleId',
+      name: 'ArticleDetail',
+      component: ArticleDetail
     }
   ],
   mode: 'history'

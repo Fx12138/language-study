@@ -18,6 +18,7 @@ export default {
       getArticlesByCat(0)
         .then((result) => {
           this.articles = result.data.data;
+          console.log(result.data.data);
         })
         .catch((err) => {
           console.log(err);
