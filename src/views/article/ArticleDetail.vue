@@ -6,10 +6,12 @@
       <div class="follow">关注他+</div>
     </div>
     <div class="content">{{ article.content }}</div>
+    <CommentList class="comment-box" :articleId="articleId"></CommentList>
   </div>
 </template>
 <script>
 import { getArticleById } from "network/article/article";
+import CommentList from "components/content/comment/CommentList";
 export default {
   data() {
     return {
@@ -33,7 +35,9 @@ export default {
       });
     },
   },
-  components: {},
+  components: {
+    CommentList,
+  },
   created() {
     this.articleId = this.$route.params.articleId;
     this.getArticle();

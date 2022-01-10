@@ -10,17 +10,25 @@
         <div>反对</div>
       </div>
       <div class="options-operate">
-        <div class="operate">展开评论</div>
+        <div class="operate" @click="showComment()">展开评论</div>
         <div class="operate">收藏</div>
         <div class="operate">分享</div>
       </div>
     </div>
+    <CommentList
+      class="comment-box"
+      v-if="commentsOn"
+      :articleId="articleItem._id"
+    ></CommentList>
   </div>
 </template>
 <script>
+import CommentList from "components/content/comment/CommentList";
 export default {
   data() {
-    return {};
+    return {
+      commentsOn: false,
+    };
   },
   props: {
     articleItem: {
@@ -37,8 +45,13 @@ export default {
         path: `/article/${articleId}`,
       });
     },
+    showComment() {
+      this.commentsOn = !this.commentsOn; //控制评论框的显隐
+    },
   },
-  components: {},
+  components: {
+    CommentList,
+  },
   created() {},
   mounted() {
     this.init();
@@ -84,4 +97,9 @@ export default {
     margin-left: 50px;
   }
 }
+// .comment-box {
+//   width: 100%;
+//   height: 100px;
+//   border: 1px solid black;
+// }
 </style>
